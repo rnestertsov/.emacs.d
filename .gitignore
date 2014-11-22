@@ -1,0 +1,16 @@
+.smex-items
+*~
+places
+elpa
+.recentf
+cider-history
+projectile-bookmarks.eld
+projectile.cache
+auto-save-list
+backups
+eshell
+url
+ac-comphist.dat
+ede-projects.el
+abbrev_defs
+*.elc
