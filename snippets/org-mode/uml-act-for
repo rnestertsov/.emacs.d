@@ -1,0 +1,6 @@
+#name plantuml-activity-for
+# --
+--> ==LOOP1==
+note left: Loop1: For each
+--> ==ENDLOOP1==
+note left: Loop1: End for each

@@ -1,0 +1,7 @@
+#name dot
+# --
+#+begin_src dot :file $1.png :cache yes :cmdlind -Kdot -Tpng
+graph G {
+   $2
+}
+#+end_src

@@ -1,0 +1,5 @@
+#name ditaa
+# --
+#+begin_src ditaa :file $1.png :cache yes
+$2
+#+end_src

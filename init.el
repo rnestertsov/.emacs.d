@@ -119,7 +119,6 @@
 (load "conf-autocomplete.el")
 (load "conf-spellcheck.el")
 (load "conf-org.el")
-(load "conf-yasnippet.el")
 (load "conf-erc.el")
 
 ;; language specific

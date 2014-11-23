@@ -1,0 +1,9 @@
+#name plantuml-activity-if
+# --
+if "" then
+  -> [] "$1"
+  --> ==M1==
+  -left-> ==M2==
+else
+end if
+--> ==M2==

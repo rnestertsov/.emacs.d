@@ -1,0 +1,11 @@
+#name plantuml-seq
+# --
+#+begin_src plantuml :file $1-seq.png :cache yes :tangle $2-seq.txt
+@startuml
+title $3
+actor User as "User"
+participant Ui as "User Interface"
+participant Db as "Database"
+$3
+@enduml
+#+end_src

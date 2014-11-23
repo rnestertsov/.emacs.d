@@ -41,6 +41,11 @@
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 (setq auto-save-default nil)
 
+;; configures yasnippet
+;; http://www.emacswiki.org/emacs/Yasnippet
+(require 'yasnippet)
+(yas/global-mode 1)
+
 ;; comments
 (defun my/toggle-comment-on-line ()
   (interactive)

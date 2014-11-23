@@ -1,0 +1,7 @@
+#name: plantuml.blank
+# --
+#+begin_src plantuml :file $1.png :cache yes
+@startuml
+$2
+@enduml
+#+end_src

@@ -1,0 +1,14 @@
+#name plantuml-activity
+# --
+#+begin_src plantuml :file $1-activity.png :cache yes :tangle $2-act.txt
+@startuml
+skinparam activity {
+   BackgroundColor<<New>> Cyan
+}
+
+title $3
+note left: $4
+(*) --> (*)
+$5
+@enduml
+#+end_src
