@@ -6,10 +6,10 @@
 
 ;; define package repositories
 (require 'package)
-;;(add-to-list 'package-archives
-;;             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-;;(add-to-list 'package-archives
-;;             '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives
+            '("org" . "http://orgmode.org/elpa/") t)
 
 ;; load and activate emacs packages.
 (package-initialize)
@@ -21,7 +21,6 @@
   (package-refresh-contents))
 
 (defvar my-packages '(go-mode
-                      clojure-test-mode
                       clojurescript-mode
                       color-theme
                       color-theme-solarized
