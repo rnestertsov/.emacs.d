@@ -1,0 +1,8 @@
+-/auto-save-list
+-/backups
+-/elpa
+-/eshell
+-/themes
+-/vendor
+-/url
+-*.el~
