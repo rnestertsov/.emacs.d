@@ -73,8 +73,8 @@
 ;; of setting this -- see the docstring for details
 (setq org-confirm-babel-evaluate nil)
 
-;; Use fundamental mode when editing plantuml blocks with C-c '
-(add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
+;; Use plantuml mode when editing plantuml blocks with C-c '
+(add-to-list 'org-src-lang-modes (quote ("plantuml" . plantuml)))
 
 ;; Enable abbrev-mode
 (add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))

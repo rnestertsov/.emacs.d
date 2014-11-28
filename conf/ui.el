@@ -59,17 +59,17 @@
       (color-theme-solarized-dark))))
 
 ;; powerline
-;; (require 'powerline)
-;; (powerline-default-theme)
+(require 'powerline)
+(powerline-default-theme)
 
-;; (setq powerline-color1 "#073642")
-;; (setq powerline-color2 "#002b36")
+(setq powerline-color1 "#073642")
+(setq powerline-color2 "#002b36")
 
-;; (set-face-attribute 'mode-line nil
-;;                     :foreground "#fdf6e3"
-;;                     :background "#2aa198"
-;;                     :box nil
-;;                     :inverse-video nil)
-;; (set-face-attribute 'mode-line-inactive nil
-;;                     :box nil
-;;                     :inverse-video nil)
+(set-face-attribute 'mode-line nil
+                    :foreground "#fdf6e3"
+                    :background "#2aa198"
+                    :box nil
+                    :inverse-video nil)
+(set-face-attribute 'mode-line-inactive nil
+                    :box nil
+                    :inverse-video nil)

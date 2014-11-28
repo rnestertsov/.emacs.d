@@ -49,7 +49,8 @@
 ;; comments
 (defun my/toggle-comment-on-line ()
   (interactive)
-  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+  (forward-line 1))
 (global-set-key (kbd "C-;") 'my/toggle-comment-on-line)
 
 ;; rainbows
