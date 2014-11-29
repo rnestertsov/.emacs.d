@@ -2,6 +2,6 @@
 
 ;; configure aspell spell checker
 
-(setq-default ispell-program-name "C:/bin/Aspell/bin/aspell.exe")
+(setq-default ispell-program-name "aspell.exe")
 (setq text-mode-hook '(lambda ()
-                        (flyspell-mode t)))
+                        (flyspell-mode nil)))

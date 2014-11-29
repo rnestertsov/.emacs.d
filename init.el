@@ -61,46 +61,8 @@
                   (mapcar 'car package-archive-contents))))
 
 ;;;;
-;; ENVIRONMENT
+;; Load grapviz and plantuml libraries 
 ;;;;
-
-;; fix the PATH variable
-(defun set-exec-path-from-shell-PATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PATH'")))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-(if window-system (set-exec-path-from-shell-PATH))
-
-(setenv "PATH" (concat (getenv "PATH") ":/bin"))
-(setq exec-path (append exec-path '("/bin")))
-
-;; Windows specific paths
-(when (string-equal system-type "windows-nt")
-      (progn
-        ;;
-        (setenv "PATH"
-                (concat
-                 "C:/bin/" ";"
-                 "C:/Program Files/Java/jdk1.7.0_51/bin/" ";"
-                 "C:/bin/graphviz/bin/" ";"))
-        (setq exec-path
-              '(
-                "C:/bin/"
-                "C:/Program Files/Java/jdk1.7.0_51/bin/"
-                "C:/bin/graphviz/bin/"))
-        ))
-
-;;--------------------------------------------------
-
-(defun osxp ()
-  (string= "darwin" system-type))
-
-(when (and (osxp) window-system)
-  ;; make option the super key on mac
-  (setq mac-option-modifier 'super)
-  ;; map meta to command key for mac
-  (setq ns-command-modifier 'meta))
 
 (load-library "graphviz-dot-mode")
 (load-library "plantuml-mode")
@@ -110,6 +72,17 @@
 ;;;;
 
 (add-to-list 'load-path "~/.emacs.d/conf")
+
+;; Windows OS specific settings
+(when (string-equal system-type "windows-nt")
+  )
+
+;; Mac OS X specific settings
+(when (string-equal system-type "darwin")
+  ;; make option the super key on mac
+  (setq mac-option-modifier 'super)
+  ;; map meta to command key for mac
+  (setq ns-command-modifier 'meta))
 
 (load "ui.el")
 (load "keyboard.el")
