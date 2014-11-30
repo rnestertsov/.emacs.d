@@ -53,9 +53,8 @@
   (forward-line 1))
 (global-set-key (kbd "C-;") 'my/toggle-comment-on-line)
 
-;; rainbows
-;; TODO: find out why it's not found
-;; (global-rainbow-delimiters-mode t)
+;; start rainbow-delimiter-mode in most programming modes (Emacs 24 and above):
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; use 2 spaces for tabs
 (defun my/tabs-to-spaces ()

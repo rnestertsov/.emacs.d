@@ -10,8 +10,6 @@
             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (add-to-list 'package-archives
             '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives
-             '("marmelade" . "http://marmalade-repo.org/packages/") t)
 
 ;; load and activate emacs packages.
 (package-initialize)
@@ -22,24 +20,81 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(go-mode
-                      clojurescript-mode
+(defvar my-packages '(;; allow ido usage in as many contexts as possible. see
+                      ;; customizations/better-defaults.el line 47 for a description
+                      ;; of ido
+                      ido-ubiquitous
+
+                      ;; Enhances M-x to allow easier execution of commands. Provides
+                      ;; a filterable list of possible commands in the minibuffer
+                      ;; http://www.emacswiki.org/emacs/Smex
+                      smex
+
+                      ;; color themes
                       color-theme
                       color-theme-solarized
+
+                      ;; makes handling lisp expressions much, much easier
+                      ;; cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
+                      paredit
+
+                      ;; key bindings and code colorization for Clojure
+                      ;; https://github.com/clojure-emacs/clojure-mode
+                      clojure-mode
+
+                      ;; extra syntax highlighting for clojure
+                      clojure-mode-extra-font-locking
+
+                      ;; Clojure development environment
+                      ;; https://github.com/clojure-emacs/cider
                       cider
-                      ac-cider
-                      auto-complete
+
+                      ;; auto completion
+                      ;; http://company-mode.github.io/
+                      company
+
+                      ;; enable popup contextual menus when using auto-completion in your code
+                      ;; https://github.com/auto-complete/popup-el
                       popup
+
+                      ;; raindow-delimiters-mode
+                      ;; https://github.com/Fanael/rainbow-delimiters
                       rainbow-delimiters
+
+                      ;; markdown mode
                       markdown-mode
+
+                      ;; snippets
                       yasnippet
+
+                      ;; save the state of Emacs from one session to another
                       desktop
+
+                      ;; automatically pairs braces and quotes
+                      ;; https://github.com/capitaomorte/autopair
                       autopair
+
+                      ;; fuzzy-search utility
+                      ;; https://github.com/d11wtq/grizzl
                       grizzl
+
+                      ;; project navigation
+                      ;; https://github.com/bbatsov/projectile
                       projectile
+
+                      ;; perspective mode
                       perspective
+
+                      ;; git integration
+                      ;; cheatsheet: http://daemianmack.com/magit-cheatsheet.html
                       magit
+
+                      ;; org-mode
+                      ;; http://orgmode.org/
                       org
+
+                      ;; powerline
+                      ;; https://github.com/milkypostman/powerline
                       powerline)
 
   "A list of packages to ensure are installed at launch.")

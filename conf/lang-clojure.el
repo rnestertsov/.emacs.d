@@ -6,12 +6,11 @@
   "Setup Clojure project root and start NREPL"
   (interactive (list (read-directory-name "Project Root: "
                                           (locate-dominating-file default-directory "project.clj"))))
-  ;; (nrepl-quit)
+  (cider-quit)
   (when (equal current-prefix-arg nil)
     (mapc 'kill-buffer (buffer-list)))
   (cd project-root)
-  ;; (nrepl-jack-in)
-  )
+  (cider-jack-in))
 
 (defun my/comment-sexp ()
   "Comment out the sexp at point."
@@ -57,9 +56,3 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
-;; (require 'ac-cider)
-;; (add-hook 'cide-mode-hook 'ac-flyspell-workaround)
-;; (add-hook 'cider-mode-hook 'ac-cider-setup)
-;; (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-;; (eval-after-load "auto-complete"
-;;   '(add-to-list 'ac-modes 'cider-mode))
