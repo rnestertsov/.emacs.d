@@ -36,6 +36,9 @@
 (setq org-html-validation-link nil)
 (setq org-export-html-)
 
+;; disable annoying underscore-to-subscript feature
+(setq org-export-with-sub-superscripts nil)
+
 ;;(add-hook 'org-babel-after-execute-hook 'my/display-inline-images 'append)
 
 ;; make babel results blocks lowercase
@@ -75,10 +78,6 @@
 
 ;; Use plantuml mode when editing plantuml blocks with C-c '
 (add-to-list 'org-src-lang-modes (quote ("plantuml" . plantuml)))
-
-;; Enable abbrev-mode
-(add-hook 'org-mode-hook (lambda () (abbrev-mode 1)))
-(setq skeleton-end-hook nil)
 
 ;; archive all DONE tasks
 (defun my/org-archive-done-tasks ()

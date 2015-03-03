@@ -48,3 +48,17 @@
 ;; enable ido in all contexts where it might be usefull
 (ido-ubiquitous-mode 1)
 
+;; vi-like navigation
+(defhydra vi-like-nav (global-map "<f12>")
+  "vi-like-nav"
+  ("l" forward-char "right")
+  ("h" backward-char "left")
+  ("j" next-line "down")
+  ("k" previous-line "up")
+  ("q" nil "cancel"))
+
+;; ace-window configuration
+(global-set-key (kbd "M-p") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
+

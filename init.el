@@ -7,9 +7,11 @@
 ;; define package repositories
 (require 'package)
 (add-to-list 'package-archives
-            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives
             '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+            '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 ;; load and activate emacs packages.
 (package-initialize)
@@ -53,6 +55,9 @@
                       ;; http://company-mode.github.io/
                       company
 
+                      ;; company-quickhelp
+                      company-quickhelp
+
                       ;; enable popup contextual menus when using auto-completion in your code
                       ;; https://github.com/auto-complete/popup-el
                       popup
@@ -95,7 +100,27 @@
 
                       ;; powerline
                       ;; https://github.com/milkypostman/powerline
-                      powerline)
+                      powerline
+
+                      ;; go-mode
+                      ;; support for golang
+                      go-mode
+
+                      ;; go-eldoc
+                      ;; provides eldoc for Go language
+                      go-eldoc
+
+                      ;; rust-mode
+                      ;; https://github.com/rust-lang/rust/tree/master/src/etc/emacs
+                      rust-mode
+
+                      ;; hydra
+                      ;; https://github.com/abo-abo/hydra
+                      hydra
+
+                      ;; ace-window
+                      ;; https://github.com/abo-abo/ace-window
+                      ace-window)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -154,6 +179,7 @@
 (load "lang-clojure.el")
 (load "lang-c.el")
 (load "lang-markdown.el")
+(load "lang-go.el")
 ;;(load "lang-nzsql.el")
 
 (custom-set-variables
@@ -167,4 +193,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-scrollbar-bg ((t (:background "#005369"))))
+ '(company-scrollbar-fg ((t (:background "#003f4f"))))
+ '(company-tooltip ((t (:inherit default :background "#003340"))))
+ '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
+ '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))

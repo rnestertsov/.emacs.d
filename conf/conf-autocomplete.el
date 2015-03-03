@@ -4,7 +4,9 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (global-set-key [(control tab)] 'company-complete-common)
-(setq company-idle-delay 0)
+(setq company-idle-delay 0.5)
+
+(company-quickhelp-mode 1)
 
 ;; configure colors
 (require 'color)

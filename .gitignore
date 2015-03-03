@@ -15,3 +15,4 @@ ede-projects.el
 abbrev_defs
 *.elc
 bookmarks
+server
