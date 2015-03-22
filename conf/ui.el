@@ -51,25 +51,43 @@
 ;; no bell
 (setq ring-bell-function 'ignore)
 
+;; set color theme
+;; it's based on the time
+(setq current-theme '(color-theme-solarized-light))
+
+(defun set-current-theme ()
+  (setq hour (string-to-number (substring (current-time-string) 11 13)))
+  (if (member hour (number-sequence 6 17))
+    (setq now '(color-theme-solarized-light))
+    (setq now '(color-theme-solarized-dark)))
+  (if (eq now current-theme)
+    nil
+    (setq current-theme now)
+    (eval now)))
+
+(run-with-timer 0 3600 'set-current-theme)
+
+(set-current-theme)
+
 ;; solarized
-(when window-system
-  (require 'color-theme)
-  (eval-after-load 'color-theme
-    (progn
-      (color-theme-solarized-dark))))
+;; (when window-system
+  ;; (require 'color-theme)
+  ;; (eval-after-load 'color-theme
+    ;; (progn
+      ;; (color-theme-solarized-dark))))
 
 ;; powerline
-(require 'powerline)
-(powerline-default-theme)
+;; (require 'powerline)
+;; (powerline-default-theme)
 
-(setq powerline-color1 "#073642")
-(setq powerline-color2 "#002b36")
+;; (setq powerline-color1 "#073642")
+;; (setq powerline-color2 "#002b36")
 
-(set-face-attribute 'mode-line nil
-                    :foreground "#fdf6e3"
-                    :background "#2aa198"
-                    :box nil
-                    :inverse-video nil)
-(set-face-attribute 'mode-line-inactive nil
-                    :box nil
-                    :inverse-video nil)
+;; (set-face-attribute 'mode-line nil
+                    ;; :foreground "#fdf6e3"
+                    ;; :background "#2aa198"
+                    ;; :box nil
+                    ;; :inverse-video nil)
+;; (set-face-attribute 'mode-line-inactive nil
+                    ;; :box nil
+                    ;; :inverse-video nil)
