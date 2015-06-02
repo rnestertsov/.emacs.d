@@ -120,7 +120,11 @@
 
                       ;; ace-window
                       ;; https://github.com/abo-abo/ace-window
-                      ace-window)
+                      ace-window
+
+                      ;; helm
+                      ;; https://github.com/emacs-helm/helm
+                      helm)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -187,7 +191,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("c:/Users/rnestertsov/My Box Files/Roman Nestertsov/org/work.org"))))
+ '(org-agenda-files nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -198,3 +202,4 @@
  '(company-tooltip ((t (:inherit default :background "#003340"))))
  '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
  '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
+(put 'erase-buffer 'disabled nil)

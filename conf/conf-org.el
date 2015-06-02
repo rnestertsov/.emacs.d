@@ -2,25 +2,53 @@
 
 ;; Configures org-mode
 
-(setq org-agenda-files (list "c:/Users/rnestertsov/My Box Files/Roman Nestertsov/org/work.org"
-                             "c:/Users/rnestertsov/My Box Files/Roman Nestertsov/org/home.org"))
+(setq org-agenda-files (list "c:/Users/rnestertsov/org/tasks"))
 
-(global-set-key "\C-ca" 'org-agenda)
+(global-set-key (kbd "<f12>") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-iswitchb)
+
+(defvar my-notes-directory "c:/Users/rnestertsov/org/notes")
+
+(defun my/notes-list ()
+  (interactive)
+  (let ((default-directory my-notes-directory))
+    (sort
+     (directory-files default-directory (not 'absolute) ".+\.org" 'nosort)
+     (lambda (a b)
+       (time-less-p (nth 5 (file-attributes b))
+                    (nth 5 (file-attributes a)))))))
+
+(defun my/file-namify-string (str)
+  (downcase (replace-regexp-in-string
+             " " "-"
+             (replace-regexp-in-string  "\\(^[ ]+\\|[ ]+$\\|[^a-z0-9_ ]+\\)" "" str))))
+
+(defun my/note-filename (note-name)
+  (concat my-notes-directory "/" note-name ".org"))
+
+(defun my/new-note (note-name)
+  (interactive "MNote name: ")
+  (let* ((note-filename (my/note-filename note-name))
+        (note-buffer (get-buffer-create note-filename)))
+    ))
 
 (defun my/notes ()
   "switch to my org notes dir."
   (interactive)
-  (find-file "c:/Users/rnestertsov/Box Sync/Roman Nestertsov/org/"))
+  (find-file my-notes-directory))
 
 ;; =============================================================================
 ;; Workflow states
-;; (setq org-todo-keywords
-;;       '((sequence "TODO" "STARTED" "|" "DONE")))
+(setq org-todo-keywords
+      '((sequence "TODO" "INPROGRESS" "|" "DONE")))
 
-;; (setq org-todo-keyword-faces
-;;       '(("TODO" . org-warning)
-;;         ("STARTED" . "yellow")
-;;         ("DONE" . "green"))) 
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("INPROGRESS" . "yellow")
+        ("DONE" . "green"))) 
+
+;; track time when item was finished
+(setq org-log-done 'time)
 
 ;; =============================================================================
 ;; Babel setup
@@ -82,4 +110,9 @@
 ;; archive all DONE tasks
 (defun my/org-archive-done-tasks ()
   (interactive)
-  (org-map-entries 'org-archive-subtree "/DONE" 'file))
+  (org-map-entries
+   (lambda ()
+     (org-archive-subtree)
+     (setq org-map-continue-from (outline-previous-heading)))
+   "/DONE"
+   'file))

@@ -22,8 +22,8 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-;; show line numbers
-(global-linum-mode t)
+;; do not show line numbers
+(global-linum-mode 0)
 
 
 ;;;;
