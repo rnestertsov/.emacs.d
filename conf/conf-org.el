@@ -2,12 +2,12 @@
 
 ;; Configures org-mode
 
-(setq org-agenda-files (list "c:/Users/rnestertsov/org/tasks"))
+(setq org-agenda-files (list "~/org/tasks"))
 
-(global-set-key (kbd "<f12>") 'org-agenda)
+;;(global-set-key (kbd "<f12>") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 
-(defvar my-notes-directory "c:/Users/rnestertsov/org/notes")
+(defvar my-notes-directory "~/org/notes")
 
 (defun my/notes-list ()
   (interactive)
@@ -55,8 +55,8 @@
 
 ;; configure org-babel in order to be able generate graphics using
 ;; external packages
-(setq org-ditaa-jar-path "c:/bin/ditaa0_9.jar")
-(setq org-plantuml-jar-path "c:/bin/plantuml.jar")
+(setq org-ditaa-jar-path "~/ditaa0_9.jar")
+(setq org-plantuml-jar-path "~/plantuml.jar")
 
 ;; remove "Validate XHTML 1.0" from html export
 (setq org-export-html-validation-link nil)

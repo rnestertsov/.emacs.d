@@ -40,7 +40,7 @@
 ;; or consolas 110
 (set-face-attribute 'default nil
                     :family "Consolas"
-                    :height 110)
+                    :height 150)
 
 ;; no cursor blinking
 (blink-cursor-mode 0)
@@ -53,6 +53,7 @@
 
 ;; set color theme
 ;; it's based on the time
+(require 'color-theme)
 (setq current-theme '(color-theme-solarized-light))
 
 (defun set-current-theme ()
@@ -69,7 +70,7 @@
 
 (set-current-theme)
 
-;; solarized
+;; Solarized
 ;; (when window-system
   ;; (require 'color-theme)
   ;; (eval-after-load 'color-theme

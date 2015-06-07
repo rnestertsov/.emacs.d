@@ -16,6 +16,10 @@
 ;; load and activate emacs packages.
 (package-initialize)
 
+;; make sure exec-path to be same as the PATH in zsh/bash config
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
@@ -124,7 +128,11 @@
 
                       ;; helm
                       ;; https://github.com/emacs-helm/helm
-                      helm)
+                      helm
+
+                      ;; exec-path-from-shell
+                      ;; https://github.com/purcell/exec-path-from-shell
+                      exec-path-from-shell)
 
   "A list of packages to ensure are installed at launch.")
 
