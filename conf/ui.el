@@ -31,10 +31,7 @@
 ;;;;
 
 ;; read http://batsov.com/articles/2012/02/19/color-theming-in-emacs-reloaded/
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Custom-Themes.html for tech details
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/themes")
-;;(load-theme 'tomorrow-night-bright t)
 
 ;; use inconsolata / 120 as default font
 ;; or consolas 110
@@ -52,30 +49,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; set color theme
-;; it's based on the time
-(require 'color-theme)
-(setq current-theme '(color-theme-solarized-light))
-
-(defun set-current-theme ()
-  (setq hour (string-to-number (substring (current-time-string) 11 13)))
-  (if (member hour (number-sequence 6 17))
-    (setq now '(color-theme-solarized-light))
-    (setq now '(color-theme-solarized-dark)))
-  (if (eq now current-theme)
-    nil
-    (setq current-theme now)
-    (eval now)))
-
-(run-with-timer 0 3600 'set-current-theme)
-
-(set-current-theme)
-
-;; Solarized
-;; (when window-system
-  ;; (require 'color-theme)
-  ;; (eval-after-load 'color-theme
-    ;; (progn
-      ;; (color-theme-solarized-dark))))
+(load-theme 'solarized-light t)
 
 ;; powerline
 ;; (require 'powerline)

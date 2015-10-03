@@ -37,12 +37,7 @@
                       smex
 
                       ;; color themes
-                      color-theme
-                      color-theme-solarized
-
-                      ;; makes handling lisp expressions much, much easier
-                      ;; cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-                      paredit
+                      solarized-theme
 
                       ;; key bindings and code colorization for Clojure
                       ;; https://github.com/clojure-emacs/clojure-mode
@@ -50,6 +45,10 @@
 
                       ;; extra syntax highlighting for clojure
                       clojure-mode-extra-font-locking
+
+                      ;; clj-refactor
+                      ;; https://github.com/clojure-emacs/clj-refactor.el
+                      clj-refactor
 
                       ;; Clojure development environment
                       ;; https://github.com/clojure-emacs/cider
@@ -132,7 +131,11 @@
 
                       ;; exec-path-from-shell
                       ;; https://github.com/purcell/exec-path-from-shell
-                      exec-path-from-shell)
+                      exec-path-from-shell
+
+                      ;; restclient
+                      ;; https://github.com/pashky/restclient.el
+                      restclient)
 
   "A list of packages to ensure are installed at launch.")
 

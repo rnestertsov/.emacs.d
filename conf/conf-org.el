@@ -7,6 +7,9 @@
 ;;(global-set-key (kbd "<f12>") 'org-agenda)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 (defvar my-notes-directory "~/org/notes")
 
 (defun my/notes-list ()

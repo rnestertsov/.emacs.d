@@ -21,6 +21,9 @@
 
 (defun my/clojure-mode-hook ()
   "Hook for Clojure mode"
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1)
+  (cljr-add-keybindings-with-prefix "C-c C-m")
   (paredit-mode 1)
   (rainbow-delimiters-mode 1)
   (local-set-key (kbd "C-c /") 'my/comment-sexp))
