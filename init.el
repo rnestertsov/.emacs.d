@@ -179,6 +179,10 @@
   ;; map meta to command key for mac
   (setq ns-command-modifier 'meta))
 
+;; start emacs server
+(load "server")
+(unless (server-running-p) (server-start))
+
 (load "ui.el")
 (load "keyboard.el")
 (load "editing.el")

@@ -5,11 +5,16 @@
 (setq org-agenda-files (list "~/org/tasks"))
 
 ;;(global-set-key (kbd "<f12>") 'org-agenda)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c b") 'org-iswitchb)
 
 (eval-after-load "org"
   '(require 'ox-md nil t))
 
+;; Notes custom API
+;;
 (defvar my-notes-directory "~/org/notes")
 
 (defun my/notes-list ()
@@ -52,6 +57,12 @@
 
 ;; track time when item was finished
 (setq org-log-done 'time)
+(setq org-enforce-todo-dependencies t)
+
+;; do not interpret 'a_b' as subscript, use 'a_{b}' instead
+(setq org-use-sub-superscripts '{})
+;; set html5 fancy mode
+(setq org-html-html5-fancy 't)
 
 ;; =============================================================================
 ;; Babel setup
@@ -119,3 +130,22 @@
      (setq org-map-continue-from (outline-previous-heading)))
    "/DONE"
    'file))
+
+;; Setup latex exporting
+;;
+;;
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+ 
+(add-to-list 'org-latex-classes
+             '("article"
+               "\\documentclass{article}
+                 \\usepackage[margin=1.5cm]{geometry}
+                 [DEFAULT-PACKAGES]
+                 [PACKAGES]
+                 [EXTRA]"
+               ("\\section{%s}" . "\\section{%s}")
+               ("\\subsection{%s}" . "\\subsection{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection{%s}")
+               ("\\paragraph{%s}" . "\\paragraph{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph{%s}")))
