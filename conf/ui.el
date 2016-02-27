@@ -53,7 +53,7 @@
 (setq ring-bell-function 'ignore)
 
 ;; set color theme
-(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 
 ;; powerline
 ;; (require 'powerline)

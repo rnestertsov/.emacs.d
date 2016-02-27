@@ -16,10 +16,6 @@
 ;; load and activate emacs packages.
 (package-initialize)
 
-;; make sure exec-path to be same as the PATH in zsh/bash config
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-
 ;; Download the ELPA archive description if needed.
 ;; This informs Emacs about the latest versions of all packages, and
 ;; makes them available for download.
@@ -155,6 +151,9 @@
                               (package-installed-p x)))
                   (mapcar 'car package-archive-contents))))
 
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;;;;
 ;; Load grapviz and plantuml libraries 
 ;;;;
@@ -167,17 +166,6 @@
 ;;;;
 
 (add-to-list 'load-path "~/.emacs.d/conf")
-
-;; Windows OS specific settings
-(when (string-equal system-type "windows-nt")
-  )
-
-;; Mac OS X specific settings
-(when (string-equal system-type "darwin")
-  ;; make option the super key on mac
-  (setq mac-option-modifier 'super)
-  ;; map meta to command key for mac
-  (setq ns-command-modifier 'meta))
 
 ;; start emacs server
 (load "server")
@@ -192,14 +180,45 @@
 (load "conf-autocomplete.el")
 (load "conf-spellcheck.el")
 (load "conf-org.el")
-(load "conf-erc.el")
+;;(load "conf-erc.el")
 
 ;; language specific
 (load "lang-clojure.el")
-(load "lang-c.el")
+;;(load "lang-c.el")
 (load "lang-markdown.el")
-(load "lang-go.el")
+;;(load "lang-go.el")
 ;;(load "lang-nzsql.el")
+
+;;;;
+;; Platform specific configurations
+;;;;
+
+;; Windows OS specific settings
+(when (string-equal system-type "windows-nt")
+  )
+
+;; Mac OS X specific settings
+(when (string-equal system-type "darwin")
+  ;; by default mac has following keybindings
+  ;;    meta = option key
+  ;;    super = command key
+  (setq mac-command-modifier 'meta)     ; make cmd key do Meta
+  (setq mac-option-modifier 'super)     ; make opt key do Super
+  (setq mac-control-modifier 'control)  ; make Control key do Control
+  (setq ns-function-modifier 'hyper)    ; make Fn key do Hyper
+
+  (defun pbcopy ()
+  		(interactive)
+  		(call-process-region (point) (mark) "pbcopy")
+  		(setq deactivate-mark t))
+
+	(defun pbpaste ()
+  		(interactive)
+  		(call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
+
+	(global-set-key (kbd "M-c") 'pbcopy)
+	(global-set-key (kbd "M-v") 'pbpaste))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

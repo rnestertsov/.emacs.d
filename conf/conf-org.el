@@ -4,7 +4,6 @@
 
 (setq org-agenda-files (list "~/org/tasks"))
 
-;;(global-set-key (kbd "<f12>") 'org-agenda)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -69,8 +68,8 @@
 
 ;; configure org-babel in order to be able generate graphics using
 ;; external packages
-(setq org-ditaa-jar-path "~/ditaa0_9.jar")
-(setq org-plantuml-jar-path "~/plantuml.jar")
+(setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.9/libexec/ditaa0_9.jar")
+(setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/8031/plantuml.8031.jar")
 
 ;; remove "Validate XHTML 1.0" from html export
 (setq org-export-html-validation-link nil)

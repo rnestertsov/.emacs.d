@@ -21,8 +21,10 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-(global-set-key (kbd "C-<right>") 'forward-word)
-(global-set-key (kbd "C-<left>") 'backward-word)
+(global-set-key (kbd "M-<right>") 'forward-word)
+(global-set-key (kbd "M-<left>") 'backward-word)
+(global-set-key (kbd "M-<up>") 'backward-paragraph)
+(global-set-key (kbd "M-<down>") 'forward-paragraph)
 
 ;; don't use hard tabs
 (setq-default indent-tabs-mode nil)
