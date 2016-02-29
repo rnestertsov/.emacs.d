@@ -1,5 +1,5 @@
 # Emacs config
-Almost all configuration is splitted into logical pieces and placed under ./conf directory. 
+Almost all configuration is split into logical pieces and placed under ./conf directory. 
 Such files then called from init.el.
 
 ## Org mode and external application
