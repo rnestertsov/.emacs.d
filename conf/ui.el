@@ -8,6 +8,9 @@
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
+;; prevent emacs from exiting without asking user
+(setq confirm-kill-emacs 'y-or-n-p)
+
 ;; disable menu bar
 (menu-bar-mode -1)
 

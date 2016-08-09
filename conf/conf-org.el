@@ -82,6 +82,10 @@
 
 ;;(add-hook 'org-babel-after-execute-hook 'my/display-inline-images 'append)
 
+(require 'ob-clojure)
+(setq org-babel-clojure-backend 'cider)
+(require 'cider)
+
 ;; make babel results blocks lowercase
 (setq org-babel-results-keyword "results")
 

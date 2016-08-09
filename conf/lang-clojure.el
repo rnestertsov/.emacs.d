@@ -59,3 +59,7 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
+;; set clojure-mode for boot files
+(add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
+
+(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
