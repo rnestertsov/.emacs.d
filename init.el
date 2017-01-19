@@ -131,7 +131,23 @@
 
                       ;; restclient
                       ;; https://github.com/pashky/restclient.el
-                      restclient)
+                      restclient
+
+                      ;; web-mode
+                      ;; https://github.com/fxbois/web-mode
+                      web-mode
+
+                      ;; haskell-mode
+                      ;; https://github.com/haskell/haskell-mode
+                      haskell-mode
+
+                      ;; yaml-mode
+                      ;; https://github.com/yoshiki/yaml-mode
+                      yaml-mode
+
+                      ;; dockerfile-mode
+                      ;; https://github.com/spotify/dockerfile-mode
+                      dockerfile-mode)
 
   "A list of packages to ensure are installed at launch.")
 
