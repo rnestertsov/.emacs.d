@@ -1,0 +1,63 @@
+# -*- mode: snippet -*-
+# name: api-blueprint
+# key: api-group
+# --
+# Group $1
+The API allows you to create, delete, update and retrieve a list or individual Entities.
+
+## $1 [/entity/{id}]
+
++ Parameters
+    + id: 7e9054da-a19f-46bb-929d-4cfe10fb6488 (string, required) - ID of the Entity in the form of guid represented as string
+
++ Attributes ($1 Base)
+  + id: `607631d6-9dbd-4ff2-b5e7-c3badee69cbd` (string, required) - Unique identifier of the object
+
+### Retrieve an $1 [GET]
+Return entity.
+
++ Response 200 (application/json)
+  + Attributes ($1)
+  
+### Update an $1 [PUT]
+Update an existing entity.
+
++ Request
+  + Attributes ($1)
+  
++ Response 200 (application/json)
+  + Attributes ($1)
+  
+### Delete $1 [DELETE]
+Delete an existing entity.
+
++ Response 204
+
+## $2 [/entities]
+
++ Attributes (array[$1])
+
+### Create an Entity [POST]
+Create new $1.
+
++ Attributes ($1 Base)
+
++ Request (application/json)
+
++ Response 201 (application/json)
+  
+  + Headers
+      Location: /entities/{id}
+      
+  + Attributes ($1)
+  
+### Get all Entities [GET]
+Get all entities.
+
++ Response 200 (application/json)
+  + Attributes ($2)
+
+# Data Structures
+
+## $1 Base (object)
++ name: name (string)

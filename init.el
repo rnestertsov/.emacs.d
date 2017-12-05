@@ -147,7 +147,28 @@
 
                       ;; dockerfile-mode
                       ;; https://github.com/spotify/dockerfile-mode
-                      dockerfile-mode)
+                      dockerfile-mode
+
+                      ;; ensime
+                      ;; http://ensime.org/editors/emacs/install/
+                      ensime
+
+                      ;; terraform-mode
+                      ;; https://github.com/syohex/emacs-terraform-mode
+                      terraform-mode
+
+                      ;; ledger-mode
+                      ledger-mode
+                      flycheck-ledger
+                      dklrt
+
+                      ;; api-blueprint
+                      ;; https://github.com/w-vi/apib-mode
+                      apib-mode
+
+                      ;; groovy-mode
+                      ;; https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes
+                      groovy-mode)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -169,6 +190,11 @@
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
+
+;;;;
+; Load mu4e
+;;;;
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 
 ;;;;
 ;; Load grapviz and plantuml libraries 
@@ -193,17 +219,23 @@
 (load "navigation.el")
 (load "misc.el")
 
+(load "mail.el")
+
 (load "conf-autocomplete.el")
 (load "conf-spellcheck.el")
 (load "conf-org.el")
+(load "conf-apib.el")
 ;;(load "conf-erc.el")
 
 ;; language specific
 (load "lang-clojure.el")
+(load "lang-scala.el")
 ;;(load "lang-c.el")
 (load "lang-markdown.el")
-;;(load "lang-go.el")
+(load "lang-go.el")
 ;;(load "lang-nzsql.el")
+
+(load "ledger.el")
 
 ;;;;
 ;; Platform specific configurations
@@ -241,7 +273,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil))
+ '(custom-safe-themes
+   (quote
+    ("d174be7606e2ebd8e381b021e63e4413ac4bb31d34a4f802dea61712fb40ef36" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(org-agenda-files nil)
+ '(package-selected-packages
+   (quote
+    (groovy-mode ob-http apib-mode org yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters projectile powerline perspective markdown-mode magit ido-ubiquitous helm haskell-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

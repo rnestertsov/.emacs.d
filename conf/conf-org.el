@@ -2,8 +2,6 @@
 
 ;; Configures org-mode
 
-(setq org-agenda-files (list "~/org/tasks/"))
-
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-c l") 'org-store-link)
@@ -75,7 +73,6 @@
 (setq org-export-html-validation-link nil)
 ;; this is for org-mode version 0.8
 (setq org-html-validation-link nil)
-(setq org-export-html-)
 
 ;; disable annoying underscore-to-subscript feature
 (setq org-export-with-sub-superscripts nil)
@@ -109,7 +106,9 @@
          (org . t)
          (plantuml . t)
          (sql . t)
-         (latex . t))))
+         (latex . t)
+         (http . t)
+         (ledger . t))))
 
 (setq org-src-fontify-natively t)
 (add-hook 'sql-mode-hook
@@ -152,3 +151,14 @@
                ("\\subsubsection{%s}" . "\\subsubsection{%s}")
                ("\\paragraph{%s}" . "\\paragraph{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph{%s}")))
+
+;; A commonly used environment for source code is lstlisting, provided by the LaTeX package listings
+(add-to-list 'org-latex-packages-alist '("" "listings" nil))
+(setq org-latex-listings t)
+
+(setq org-latex-listings-options '(("breaklines" "true")))
+
+;; set agenda files
+(setq org-agenda-files (list "~/org/tasks/"))
+
+
