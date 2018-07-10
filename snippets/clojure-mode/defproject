@@ -7,9 +7,10 @@
   :url "$3"
   :license {:name "GNU General Public License"
             :url "http://www.gnu.org/licenses/gpl.html"}
+
   :dependencies [[org.clojure/clojure "1.7.0"]]
-  :profiles {:dev {:plugins [[cider/cider-nrepl "0.10.1"]
-                             [refactor-nrepl "2.0.0-SNAPSHOT"]]
+
+  :profiles {:dev {:plugins []
                    :dependencies [[reloaded.repl "0.1.0"]
                                   [org.clojure/tools.nrepl "0.2.12"]]
                    :source-paths ["dev"]}})

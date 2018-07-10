@@ -106,7 +106,7 @@
       ;; create the undo information
       (setq buffer-undo-list (cons (cons eol (point)) buffer-undo-list)))
     ) ; end-of-let
-  
+
   ;; put the point in the lowest line and return
   (next-line arg))
 
@@ -117,6 +117,24 @@
                   (line-beginning-position (+ 1 arg)))
   (message "%d lines%s copied" arg (if (= 1 arg) "" "s")))
 
+(defun my/convert-new-lines (start end)
+  "Convert \n characters to new lines"
+  (interactive "r")
+  (save-excursion
+    (goto-char start)
+    (while (re-search-forward "\\n" end t)
+      (replace-match "\n"))))
+
+(defun my/unslack (start end)
+  "Slack converting double quates to “ and ”, which is really annoying.
+   This simple function replace those chars to normal double quotes."
+  (interactive "r")
+  (save-excursion
+    (goto-char start)
+    (while (re-search-forward "“\\|”" end t)
+      (replace-match "\""))))
+
+;;this\nis a text\n and another text
+
 (global-set-key (kbd "C-d") 'my/duplicate-line)
 (global-set-key (kbd "C-c d") 'my/copy-line)
-

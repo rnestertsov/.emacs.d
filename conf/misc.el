@@ -48,3 +48,9 @@
 
 ;; ensure files have no trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; configure column wrapping
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'text-mode-hook
+          '(lambda()
+             (set-fill-column 120)))

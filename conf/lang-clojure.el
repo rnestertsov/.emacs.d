@@ -52,7 +52,7 @@
         cider-interactive-eval-result-prefix ";; => "
         ;; Font-lock code in the REPL
         cider-repl-use-clojure-font-lock t
-        ) 
+        )
   )
 (add-hook 'cider-mode-hook 'my/cider-mode-hook)
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
@@ -63,3 +63,5 @@
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 
 (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+
+(setq cider-repl-display-in-current-window nil)

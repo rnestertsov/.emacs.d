@@ -8,8 +8,8 @@
 (require 'package)
 (add-to-list 'package-archives
             '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives
-            '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;;(add-to-list 'package-archives
+;;	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
@@ -37,18 +37,18 @@
 
                       ;; key bindings and code colorization for Clojure
                       ;; https://github.com/clojure-emacs/clojure-mode
-                      clojure-mode
+                      ;; clojure-mode
 
                       ;; extra syntax highlighting for clojure
-                      clojure-mode-extra-font-locking
+                      ;; clojure-mode-extra-font-locking
 
                       ;; clj-refactor
                       ;; https://github.com/clojure-emacs/clj-refactor.el
-                      clj-refactor
+                      ;; clj-refactor
 
                       ;; Clojure development environment
                       ;; https://github.com/clojure-emacs/cider
-                      cider
+                      ;; cider
 
                       ;; auto completion
                       ;; http://company-mode.github.io/
@@ -168,7 +168,23 @@
 
                       ;; groovy-mode
                       ;; https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes
-                      groovy-mode)
+                      groovy-mode
+
+                      ;; racket-mode
+                      ;; https://github.com/greghendershott/racket-mode
+                      racket-mode
+
+                      ;; interleave
+                      ;; https://github.com/rudolfochrist/interleave
+                      interleave
+
+                      ;; org-ref
+                      ;; https://github.com/jkitchin/org-ref
+                      org-ref
+
+                      ;; protobuf-mode
+                      ;; https://github.com/google/protobuf/blob/master/editors/protobuf-mode.el
+                      protobuf-mode)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -189,7 +205,8 @@
                   (mapcar 'car package-archive-contents))))
 
 (when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
 
 ;;;;
 ; Load mu4e
@@ -197,7 +214,7 @@
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
 
 ;;;;
-;; Load grapviz and plantuml libraries 
+;; Load grapviz and plantuml libraries
 ;;;;
 
 (load-library "graphviz-dot-mode")
@@ -225,10 +242,11 @@
 (load "conf-spellcheck.el")
 (load "conf-org.el")
 (load "conf-apib.el")
+(load "conf-dired.el")
 ;;(load "conf-erc.el")
 
 ;; language specific
-(load "lang-clojure.el")
+;; (load "lang-clojure.el")
 (load "lang-scala.el")
 ;;(load "lang-c.el")
 (load "lang-markdown.el")
@@ -267,7 +285,6 @@
 	(global-set-key (kbd "M-c") 'pbcopy)
 	(global-set-key (kbd "M-v") 'pbpaste))
 
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -275,19 +292,150 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("d174be7606e2ebd8e381b021e63e4413ac4bb31d34a4f802dea61712fb40ef36" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(org-agenda-files nil)
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(org-export-backends (quote (ascii html icalendar latex odt confluence)))
  '(package-selected-packages
    (quote
-    (groovy-mode ob-http apib-mode org yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters projectile powerline perspective markdown-mode magit ido-ubiquitous helm haskell-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair ace-window))))
+    (protobuf-mode org-ref interleave yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters racket-mode projectile powerline perspective org ob-http magit ido-ubiquitous helm haskell-mode groovy-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair apib-mode ace-window)))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (put
+            (quote call-with-values)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote package)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote struct)
+            (quote scheme-indent-function)
+            0)
+           (put
+            (quote with-exception-handler)
+            (quote scheme-indent-function)
+            0)
+           (put
+            (quote call-with-mutex)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-context)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-transaction)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-transaction*)
+            (quote scheme-indent-function)
+            3)
+           (put
+            (quote call-with-transaction)
+            (quote scheme-indent-function)
+            3)
+           (put
+            (quote call-with-references-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-history-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-table-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-index-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-store-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-store-index-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-subjects-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-predicates-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-graph-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-merge)
+            (quote scheme-indent-function)
+            3)
+           (put
+            (quote call-with-merge*)
+            (quote scheme-indent-function)
+            3)
+           (put
+            (quote run*)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote fresh)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote conde)
+            (quote scheme-indent-function)
+            nil)
+           (put
+            (quote with-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-directory)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-env)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-context)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote match)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-transaction)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote test-check)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote call-with-cursor)
+            (quote scheme-indent-function)
+            1)
+           (put
+            (quote with-cnx)
+            (quote scheme-indent-function)
+            1))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(company-scrollbar-bg ((t (:background "#005369"))))
- '(company-scrollbar-fg ((t (:background "#003f4f"))))
- '(company-tooltip ((t (:inherit default :background "#003340"))))
+ '(company-scrollbar-bg ((t (:background "#000053f06969"))))
+ '(company-scrollbar-fg ((t (:background "#00003f8d4fcf"))))
+ '(company-tooltip ((t (:inherit default :background "#000033524073"))))
  '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
  '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
-(put 'erase-buffer 'disabled nil)
+(put 'dired-find-alternate-file 'disabled nil)
