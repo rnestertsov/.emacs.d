@@ -248,7 +248,6 @@
 ;; language specific
 (load "lang-clojure.el")
 (load "lang-ts.el")
-(load "lang-scala.el")
 (load "lang-c.el")
 (load "lang-markdown.el")
 (load "lang-go.el")

@@ -60,7 +60,7 @@ Adapted from `flyspell-correct-word-before-point'."
                                                                                    "Default"))
                                                    :must-match t
                                                    :alistp t)
-                                   
+
                                    poss word cursor-location start end opoint)))
             (ispell-pdict-save t)))))
 

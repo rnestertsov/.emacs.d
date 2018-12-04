@@ -15,10 +15,6 @@
   (setq company-echo-delay 0)                          ; remove annoying blinking
   (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
 
-  ;; (require 'go-autocomplete)
-  ;; (require 'auto-complete-config)
-  ;; (ac-config-default)
-
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   (add-hook 'go-mode-hook 'go-eldoc-setup)
