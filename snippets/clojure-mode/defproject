@@ -8,9 +8,9 @@
   :license {:name "GNU General Public License"
             :url "http://www.gnu.org/licenses/gpl.html"}
 
-  :dependencies [[org.clojure/clojure "1.7.0"]]
+  :dependencies [[org.clojure/clojure "1.9.0"]]
 
   :profiles {:dev {:plugins []
                    :dependencies [[reloaded.repl "0.1.0"]
-                                  [org.clojure/tools.nrepl "0.2.12"]]
+                                  [nrepl "0.4.5"]]
                    :source-paths ["dev"]}})

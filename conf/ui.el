@@ -1,10 +1,13 @@
 ;;; ui.el ---
 
+(delete-other-windows)
+(split-window-horizontally)
+
 ;; smooth-scrolling stops that annoying jump when moving around
 (require 'smooth-scrolling)
 (setq redisplay-dont-pause t
       scroll-margin 1
-      scroll-step 1
+      scroll-step 3
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
@@ -42,6 +45,10 @@
                     :family "Consolas"
                     :height 150)
 
+;; make titlebar same colo as Emacs background
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 ;; no cursor blinking
 (blink-cursor-mode 0)
 
@@ -73,3 +80,9 @@
 ;; (set-face-attribute 'mode-line-inactive nil
                     ;; :box nil
                     ;; :inverse-video nil)
+
+;; set icons theme for Neotree
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(setq neo-autorefresh nil)
+;; make neotree resizable
+(setq neo-window-fixed-size nil)

@@ -48,17 +48,14 @@
 ;; enable ido in all contexts where it might be usefull
 (ido-ubiquitous-mode 1)
 
-;; vi-like navigation
-(defhydra vi-like-nav (global-map "<f12>")
-  "vi-like-nav"
-  ("l" forward-char "right")
-  ("h" backward-char "left")
-  ("j" next-line "down")
-  ("k" previous-line "up")
-  ("q" nil "cancel"))
+(defun my/switch-to-last-buffer ()
+  (interactive)
+  (switch-to-buffer nil))
+
+(global-set-key (kbd "M-[") 'my/switch-to-last-buffer)
 
 ;; ace-window configuration
-(global-set-key (kbd "M-p") 'ace-window)
+(global-set-key (kbd "C-c o") 'ace-window)
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
 
 ;; configure helm
@@ -66,8 +63,5 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match t)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-c y") 'helm-show-kill-ring)
 (helm-mode 1)
-
-

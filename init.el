@@ -7,11 +7,11 @@
 ;; define package repositories
 (require 'package)
 (add-to-list 'package-archives
-            '("org" . "http://orgmode.org/elpa/") t)
-;;(add-to-list 'package-archives
-;;	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
-            '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+	           '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 ;; load and activate emacs packages.
 (package-initialize)
@@ -97,10 +97,6 @@
                       ;; http://orgmode.org/
                       org
 
-                      ;; powerline
-                      ;; https://github.com/milkypostman/powerline
-                      powerline
-
                       ;; go-mode
                       ;; support for golang
                       go-mode
@@ -149,14 +145,6 @@
                       ;; https://github.com/spotify/dockerfile-mode
                       dockerfile-mode
 
-                      ;; ensime
-                      ;; http://ensime.org/editors/emacs/install/
-                      ensime
-
-                      ;; terraform-mode
-                      ;; https://github.com/syohex/emacs-terraform-mode
-                      terraform-mode
-
                       ;; ledger-mode
                       ledger-mode
                       flycheck-ledger
@@ -184,7 +172,19 @@
 
                       ;; protobuf-mode
                       ;; https://github.com/google/protobuf/blob/master/editors/protobuf-mode.el
-                      protobuf-mode)
+                      protobuf-mode
+
+                      ;; use-package
+                      ;; https://jwiegley.github.io/use-package/
+                      use-package
+
+                      ;; demo-it
+                      ;; https://github.com/howardabrams/demo-it
+                      demo-it
+
+                      ;; cquery
+                      ;; https://github.com/cquery-project/cquery
+                      cquery)
 
   "A list of packages to ensure are installed at launch.")
 
@@ -246,9 +246,10 @@
 ;;(load "conf-erc.el")
 
 ;; language specific
-;; (load "lang-clojure.el")
+(load "lang-clojure.el")
+(load "lang-ts.el")
 (load "lang-scala.el")
-;;(load "lang-c.el")
+(load "lang-c.el")
 (load "lang-markdown.el")
 (load "lang-go.el")
 ;;(load "lang-nzsql.el")
@@ -296,7 +297,7 @@
  '(org-export-backends (quote (ascii html icalendar latex odt confluence)))
  '(package-selected-packages
    (quote
-    (protobuf-mode org-ref interleave yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters racket-mode projectile powerline perspective org ob-http magit ido-ubiquitous helm haskell-mode groovy-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair apib-mode ace-window)))
+    (cquery demo-it tide hackernews request use-package dap-mode cider nginx-mode all-the-icons neotree lua-mode protobuf-mode org-ref interleave yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters racket-mode projectile powerline perspective org ob-http magit ido-ubiquitous helm haskell-mode groovy-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair apib-mode ace-window)))
  '(safe-local-variable-values
    (quote
     ((eval progn
