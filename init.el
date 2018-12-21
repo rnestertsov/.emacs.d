@@ -107,7 +107,7 @@
 
                       ;; rust-mode
                       ;; https://github.com/rust-lang/rust/tree/master/src/etc/emacs
-                      rust-mode
+                      ;; rust-mode
 
                       ;; hydra
                       ;; https://github.com/abo-abo/hydra
@@ -135,7 +135,7 @@
 
                       ;; haskell-mode
                       ;; https://github.com/haskell/haskell-mode
-                      haskell-mode
+                      ;; haskell-mode
 
                       ;; yaml-mode
                       ;; https://github.com/yoshiki/yaml-mode
@@ -156,11 +156,11 @@
 
                       ;; groovy-mode
                       ;; https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes
-                      groovy-mode
+                      ;; groovy-mode
 
                       ;; racket-mode
                       ;; https://github.com/greghendershott/racket-mode
-                      racket-mode
+                      ;; racket-mode
 
                       ;; interleave
                       ;; https://github.com/rudolfochrist/interleave
@@ -261,10 +261,13 @@
 
 ;; Windows OS specific settings
 (when (string-equal system-type "windows-nt")
-  )
+  (setq user-init-file "C:\\Users\\rnestertsov\\AppData\\Roaming\\.emacs.d\\init.el")
+  (setq w32-get-true-file-attributes nil))
 
 ;; Mac OS X specific settings
 (when (string-equal system-type "darwin")
+  (setq user-init-file "/Users/rnestertsov/.emacs.d/init.el")
+
   ;; by default mac has following keybindings
   ;;    meta = option key
   ;;    super = command key
@@ -285,157 +288,13 @@
 	(global-set-key (kbd "M-c") 'pbcopy)
 	(global-set-key (kbd "M-v") 'pbpaste))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
- '(org-export-backends (quote (ascii html icalendar latex odt confluence)))
- '(package-selected-packages
-   (quote
-    (cquery demo-it tide hackernews request use-package dap-mode cider nginx-mode all-the-icons neotree lua-mode protobuf-mode org-ref interleave yaml-mode web-mode terraform-mode solarized-theme smex rust-mode restclient rainbow-delimiters racket-mode projectile powerline perspective org ob-http magit ido-ubiquitous helm haskell-mode groovy-mode grizzl go-eldoc flycheck-ledger exec-path-from-shell ensime dockerfile-mode dklrt company-quickhelp clojure-mode-extra-font-locking clj-refactor autopair apib-mode ace-window)))
- '(safe-local-variable-values
-   (quote
-    ((eval progn
-           (put
-            (quote call-with-values)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote package)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote struct)
-            (quote scheme-indent-function)
-            0)
-           (put
-            (quote with-exception-handler)
-            (quote scheme-indent-function)
-            0)
-           (put
-            (quote call-with-mutex)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-context)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-transaction)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-transaction*)
-            (quote scheme-indent-function)
-            3)
-           (put
-            (quote call-with-transaction)
-            (quote scheme-indent-function)
-            3)
-           (put
-            (quote call-with-references-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-history-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-table-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-index-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-store-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-store-index-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-subjects-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-predicates-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-graph-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-merge)
-            (quote scheme-indent-function)
-            3)
-           (put
-            (quote call-with-merge*)
-            (quote scheme-indent-function)
-            3)
-           (put
-            (quote run*)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote fresh)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote conde)
-            (quote scheme-indent-function)
-            nil)
-           (put
-            (quote with-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-directory)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-env)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-context)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote match)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-transaction)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote test-check)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote call-with-cursor)
-            (quote scheme-indent-function)
-            1)
-           (put
-            (quote with-cnx)
-            (quote scheme-indent-function)
-            1))))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(company-scrollbar-bg ((t (:background "#000053f06969"))))
- '(company-scrollbar-fg ((t (:background "#00003f8d4fcf"))))
- '(company-tooltip ((t (:inherit default :background "#000033524073"))))
- '(company-tooltip-common ((t (:inherit font-lock-constant-face))))
- '(company-tooltip-selection ((t (:inherit font-lock-function-name-face)))))
-(put 'dired-find-alternate-file 'disabled nil)
+;; instant access to init.el
+(defun my/find-user-init-file ()
+  "Edit the `user-init-file', in another window."
+  (interactive)
+  (find-file-other-window user-init-file))
+(global-set-key (kbd "C-c I") #'my/find-user-init-file)
+
+;; have custom as separate file
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)

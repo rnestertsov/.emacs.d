@@ -65,3 +65,33 @@
       helm-recentf-fuzzy-match t)
 (global-set-key (kbd "C-c y") 'helm-show-kill-ring)
 (helm-mode 1)
+
+;;;;
+;; projectile
+;;;;
+(setq projectile-switch-project-action #'projectile-dired)
+
+(add-to-list 'projectile-globally-ignored-directories "node_modules")
+(add-to-list 'projectile-globally-ignored-directories ".cquery_cached_index")
+(add-to-list 'projectile-globally-ignored-directories "dist")
+(add-to-list 'projectile-globally-ignored-directories "build")
+(add-to-list 'projectile-globally-ignored-directories "CMakeFiles")
+
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+
+;; workaround to fix existing issue
+(setq projectile-project-run-cmd "")
+
+(defun my/projectile-run-project (&optional prompt)
+  (interactive "P")
+  (let ((compilation-read-command
+         (or (not (projectile-run-command (projectile-compilation-dir)))
+             prompt)))
+    (projectile-run-project prompt)))
+
+(defun my/projectile-compile-project (&optional prompt)
+  (interactive "P")
+  (let ((compilation-read-command
+         (or (not (projectile-compilation-command (projectile-compilation-dir)))
+             prompt)))
+    (projectile-compile-project prompt)))
