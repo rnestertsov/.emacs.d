@@ -20,8 +20,8 @@
 ;; org-capture
 
 ;; set default notes file
-(setq org-directory "~/org/tasks")
-(setq org-default-notes-file "~/org/tasks/refile.org")
+(setq org-directory "~/Dropbox/org/tasks")
+(setq org-default-notes-file "~/Dropbox/org/tasks/refile.org")
 
 ;; Define the custum capture templates
 (setq org-capture-templates
@@ -380,6 +380,8 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
       next-headline)))
 
 ;; set agenda files
+;; (setq org-agenda-file-regexp "\\`[^.#].*[^_]\\.org\\'"
+;; org-agenda-files (list org-directory "~/work/planning"))
 (setq org-agenda-files (list "~/org/tasks/aginity.org"))
 
 ;; Do not dim blocked tasks
@@ -509,7 +511,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ;; configure org-babel in order to be able generate graphics using
 ;; external packages
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0/libexec/ditaa-0.11.0-standalone.jar")
-(setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar")
+(setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2020.18/libexec/plantuml.jar")
 
 ;; remove "Validate XHTML 1.0" from html export
 (setq org-export-html-validation-link nil)
@@ -548,8 +550,9 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
          (org . t)
          (plantuml . t)
          (sql . t)
+         (sqlite . t)
          (latex . t)
-         (http . t)
+         ;;(http . t)
          (ledger . t)))
 
 (setq org-src-fontify-natively t)
@@ -602,8 +605,42 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 
 ;; =============================================================================
 ;; org-ref configuration
-(require 'org-ref)
+;; (require 'org-ref)
 
-(setq org-ref-bibliography-notes "~/org/ref/notes.org"
-      org-ref-default-bibliography '("~/org/ref/master.bib")
-      org-ref-pdf-directory "~/org/ref/pdfs/")
+;; (setq org-ref-bibliography-notes "~/org/ref/notes.org"
+      ;; org-ref-default-bibliography '("~/org/ref/master.bib")
+      ;; org-ref-pdf-directory "~/org/ref/pdfs/")
+
+
+;; =============================================================================
+;; Fix duration units
+;; (setq org-duration-format '(("d" . nil) ("h" . t) ("min" . t)))
+(setq org-duration-units
+      `(("min" . 1)
+        ("h" . 60)
+        ;; eight-hour days
+        ("d" . ,(* 60 8))
+        ;; five-day work week
+        ("w" . ,(* 60 8 5))
+        ;; four weeks in a month
+        ("m" . ,(* 60 8 5 4))
+        ;; work a total of 12 months a year --
+        ;; this is independent of holiday and sick time taken
+        ("y" . ,(* 60 8 5 4 12))))
+
+;; configure taskjuggler
+(require 'ox-taskjuggler)
+
+(add-to-list
+ 'ivy-completing-read-handlers-alist
+ '(org-capture-refile . completing-read-default))
+
+(setq org-src-window-setup 'other-window)
+
+(setq org-babel-python-command "python3")
+
+;; library of Babel
+;; inject certain code to be available in the org files
+;; this is the only way how to do this for now
+;; https://orgmode.org/manual/Library-of-Babel.html#Library-of-Babel
+;; (org-babel-lob-ingest "path/to/simpleShExample.org")

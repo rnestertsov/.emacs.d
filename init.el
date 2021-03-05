@@ -22,33 +22,25 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages '(;; allow ido usage in as many contexts as possible. see
-                      ;; customizations/better-defaults.el line 47 for a description
-                      ;; of ido
-                      ido-ubiquitous
+(defvar my-packages '(;; use-package
+                      use-package
 
-                      ;; Enhances M-x to allow easier execution of commands. Provides
-                      ;; a filterable list of possible commands in the minibuffer
-                      ;; http://www.emacswiki.org/emacs/Smex
-                      smex
+                      ;; rg
+                      rg
+
+                      ;; eyebrowse
+                      eyebrowse
 
                       ;; color themes
                       solarized-theme
 
-                      ;; key bindings and code colorization for Clojure
-                      ;; https://github.com/clojure-emacs/clojure-mode
-                      ;; clojure-mode
-
-                      ;; extra syntax highlighting for clojure
-                      ;; clojure-mode-extra-font-locking
+                      ;; Clojure development environment
+                      ;; https://github.com/clojure-emacs/cider
+                      cider
 
                       ;; clj-refactor
                       ;; https://github.com/clojure-emacs/clj-refactor.el
                       ;; clj-refactor
-
-                      ;; Clojure development environment
-                      ;; https://github.com/clojure-emacs/cider
-                      ;; cider
 
                       ;; auto completion
                       ;; http://company-mode.github.io/
@@ -72,15 +64,11 @@
                       yasnippet
 
                       ;; save the state of Emacs from one session to another
-                      desktop
+                      ;; desktop
 
                       ;; automatically pairs braces and quotes
                       ;; https://github.com/capitaomorte/autopair
                       autopair
-
-                      ;; fuzzy-search utility
-                      ;; https://github.com/d11wtq/grizzl
-                      grizzl
 
                       ;; project navigation
                       ;; https://github.com/bbatsov/projectile
@@ -96,6 +84,7 @@
                       ;; org-mode
                       ;; http://orgmode.org/
                       org
+                      org-plus-contrib
 
                       ;; go-mode
                       ;; support for golang
@@ -104,6 +93,9 @@
                       ;; go-eldoc
                       ;; provides eldoc for Go language
                       go-eldoc
+
+                      ;; gotest
+                      gotest
 
                       ;; rust-mode
                       ;; https://github.com/rust-lang/rust/tree/master/src/etc/emacs
@@ -115,11 +107,7 @@
 
                       ;; ace-window
                       ;; https://github.com/abo-abo/ace-window
-                      ace-window
-
-                      ;; helm
-                      ;; https://github.com/emacs-helm/helm
-                      helm
+                      ;; ace-window
 
                       ;; exec-path-from-shell
                       ;; https://github.com/purcell/exec-path-from-shell
@@ -133,10 +121,6 @@
                       ;; https://github.com/fxbois/web-mode
                       web-mode
 
-                      ;; haskell-mode
-                      ;; https://github.com/haskell/haskell-mode
-                      ;; haskell-mode
-
                       ;; yaml-mode
                       ;; https://github.com/yoshiki/yaml-mode
                       yaml-mode
@@ -149,10 +133,6 @@
                       ledger-mode
                       flycheck-ledger
                       dklrt
-
-                      ;; api-blueprint
-                      ;; https://github.com/w-vi/apib-mode
-                      apib-mode
 
                       ;; groovy-mode
                       ;; https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes
@@ -174,17 +154,31 @@
                       ;; https://github.com/google/protobuf/blob/master/editors/protobuf-mode.el
                       protobuf-mode
 
-                      ;; use-package
-                      ;; https://jwiegley.github.io/use-package/
-                      use-package
-
                       ;; demo-it
                       ;; https://github.com/howardabrams/demo-it
-                      demo-it
+                      ;; demo-it
 
                       ;; cquery
                       ;; https://github.com/cquery-project/cquery
-                      cquery)
+                      cquery
+
+                      ;; lsp-mode
+                      lsp-mode
+                      ;; lsp-ui ;; to intrusive
+                      company-lsp
+
+                      ivy
+                      ivy-rich
+                      counsel-projectile
+
+                      cyberpunk-theme
+
+                      elisp-slime-nav
+
+                      amx
+
+                      which-key
+                      )
 
   "A list of packages to ensure are installed at launch.")
 
@@ -195,8 +189,17 @@
 ;; add vendor folder to load path
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 
+;; configure flycheck
+;; (require 'flycheck)
+;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; workaround for go vet https://github.com/flycheck/flycheck/issues/1523
+;; (let ((govet (flycheck-checker-get 'go-vet 'command)))
+  ;; (when (equal (cadr govet) "tool")
+    ;; (setf (cdr govet) (cddr govet))))
+
 (defun my/package-list-untracked-packages ()
-  "Show a list of packages that installed and are not in 'my-packages'"
+  "Show a list of packages that installed and are not in 'my-packages'."
   (interactive)
   (package-show-package-list
    (remove-if-not (lambda (x) (and (not (memq x my-packages))
@@ -207,6 +210,35 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "GOPATH"))
+
+;; dired-sidebar
+(use-package dired-sidebar
+  :bind (("C-x C-n" . dired-sidebar-toggle-sidebar))
+  :ensure t
+  :commands (dired-sidebar-toggle-sidebar)
+  :init
+  (add-hook 'dired-sidebar-mode-hook
+            (lambda ()
+              (unless (file-remote-p default-directory)
+                (auto-revert-mode))))
+  :config
+  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
+  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
+
+  (setq dired-sidebar-subtree-line-prefix "__")
+  (setq dired-sidebar-theme 'vscode)
+  (setq dired-sidebar-use-term-integration t)
+  (setq dired-sidebar-use-custom-font t))
+
+(use-package vscode-icon
+  :ensure t
+  :commands (vscode-icon-for-file))
+
+(use-package vterm
+  :ensure t)
+
+;; enable eyebroser mode on startup
+(eyebrowse-mode t)
 
 ;;;;
 ; Load mu4e
@@ -219,6 +251,7 @@
 
 (load-library "graphviz-dot-mode")
 (load-library "plantuml-mode")
+(load-library "go-dlv")
 
 ;;;;
 ;; Configuration
@@ -235,23 +268,32 @@
 (load "editing.el")
 (load "navigation.el")
 (load "misc.el")
+(load "popup.el")
 
-(load "mail.el")
+;; (load "mail.el")
 
 (load "conf-autocomplete.el")
 (load "conf-spellcheck.el")
 (load "conf-org.el")
 (load "conf-apib.el")
 (load "conf-dired.el")
+(load "conf-lsp.el")
+(load "conf-eww.el")
+
 ;;(load "conf-erc.el")
 
 ;; language specific
-(load "lang-clojure.el")
+;; (load "lang-clojure.el")
+(add-hook 'clojure-mode-hook #'paredit-mode)
+
+
 (load "lang-ts.el")
 (load "lang-c.el")
 (load "lang-markdown.el")
 (load "lang-go.el")
 ;;(load "lang-nzsql.el")
+
+(load "conf-eshell.el")
 
 (load "ledger.el")
 
@@ -298,3 +340,4 @@
 ;; have custom as separate file
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+(put 'dired-find-alternate-file 'disabled nil)

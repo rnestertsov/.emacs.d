@@ -13,12 +13,17 @@
 ;; highlight matching parenthesis
 (show-paren-mode 1)
 
+;; make replace string case sensisitve
+(defadvice replace-string (around turn-off-case-fold-search)
+  (let ((case-fold-search nil))
+    ad-do-it))
+
+(ad-activate 'replace-string)
+
 ;; highlight current line
 (global-hl-line-mode 1)
 
 ;; interactive search
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 (global-set-key (kbd "M-<right>") 'forward-word)
@@ -27,7 +32,7 @@
 (global-set-key (kbd "M-<down>") 'forward-paragraph)
 
 ;; highlight TODO / STUFY / IMPORTANT / NOTE
-(setq fixme-modes '(c++-mode c-mode emacs-lisp-mode))
+(setq fixme-modes '(c++-mode c-mode emacs-lisp-mode go-mode))
 (make-face 'font-lock-fixme-face)
 (make-face 'font-lock-study-face)
 (make-face 'font-lock-important-face)
@@ -152,6 +157,16 @@
     (goto-char start)
     (while (re-search-forward "“\\|”" end t)
       (replace-match "\""))))
+
+(defun my/diff-last-two-kills ()
+  "Write the last two kills to temporary files and diff them."
+  (interactive)
+  (let ((old "/tmp/old-kill") (new "/tmp/new-kill"))
+    (with-temp-file new
+      (insert (current-kill 0 t)))
+    (with-temp-file old
+      (insert (current-kill 1 t)))
+    (diff old new "-u" t)))
 
 ;;this\nis a text\n and another text
 

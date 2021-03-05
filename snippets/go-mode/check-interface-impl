@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: check interface implementation
+# key: cintimpl
+# --
+var _ $1 = (*$2)(nil)

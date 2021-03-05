@@ -55,13 +55,13 @@
         )
   )
 (add-hook 'cider-mode-hook 'my/cider-mode-hook)
-(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+(add-hook 'cider-mode-hook 'eldoc-mode)
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
 
 ;; set clojure-mode for boot files
 (add-to-list 'auto-mode-alist '("\\.boot\\'" . clojure-mode))
 
-(setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+;; (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
 (setq cider-repl-display-in-current-window nil)

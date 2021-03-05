@@ -1,0 +1,73 @@
+#name taskj
+# --
+#+TITLE: Project Estimation
+#+PROPERTY: Effort_ALL 1d 2d 3d 1w 2w 3w 1m 2m
+#+PROPERTY: allocate_ALL dev qa roman yuriym dmitriys stasm nikolayz andreyo maxk
+#+COLUMNS: %30ITEM(Task) %EFFORT(Effort) %ALLOCATE(allocate) %BLOCKER %ORDERED
+
+* Stories                                               :taskjuggler_project:
+  :ID:       stories-schedule
+  :start:    2020-10-12
+  :END:
+
+** Development
+*** Story 1
+    :PROPERTIES:
+    :Effort:   1w
+    :task_id:  story1
+    :allocate: dev1
+    :END:
+
+*** Story 2
+    :PROPERTIES:
+    :Effort:   1m
+    :allocate: dev1
+    :URL:      https://jira.aginity.com:8443/browse/ACD-9732
+    :BLOCKER:  story1
+    :END:
+
+*** Story 3
+    :PROPERTIES:
+    :Effort:   3w
+    :allocate: dev2
+    :END:
+
+** QA
+   :PROPERTIES:
+   :BLOCKER:  previous-sibling
+   :END:
+
+*** Testing
+    :PROPERTIES:
+    :allocate: qa1
+    :END:
+
+* Resources                                           :taskjuggler_resource:
+  :PROPERTIES:
+  :END:
+** Developers
+   :PROPERTIES:
+   :resource_id: dev
+   :END:
+*** Dev 1
+    :PROPERTIES:
+    :resource_id: dev1
+    :limits:   { dailymax 4h }
+    :END:
+
+*** Dev 2
+    :PROPERTIES:
+    :resource_id: dev2
+    :limits:   { dailymax 7h }
+    :END:
+
+** QA
+   :PROPERTIES:
+   :resource_id: qa
+   :END:
+*** Qa1
+    :PROPERTIES:
+    :resource_id: qa1
+    :vacation: 2019-09-24 - 2019-10-05
+    :limits:   { dailymax 7h }
+    :END:

@@ -7,6 +7,7 @@
 
 (defun my/c-mode-hook ()
   "Hook for C/C++ mode"
-  (lsp-cquery-enable))
+  ;; (lsp-cquery-enable)
+  )
 
 (add-hook 'c-mode-common-hook 'my/c-mode-hook)

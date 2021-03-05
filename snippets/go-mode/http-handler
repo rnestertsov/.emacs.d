@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: http handler block
+# key: httph
+# --
+func $1(w http.ResponseWriter, r *http.Request) {
+     $2
+}

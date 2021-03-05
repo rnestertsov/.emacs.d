@@ -24,6 +24,17 @@
   ; shortcuts
   (local-set-key (kbd "C-c C-c") 'compile)
 
+  (let ((map go-mode-map))
+        (define-key map (kbd "C-c t p") 'go-test-current-project)
+        (define-key map (kbd "C-c t f") 'go-test-current-file)
+        (define-key map (kbd "C-c t t") 'go-test-current-test)
+        (define-key map (kbd "C-c b t") 'go-test-current-benchmark)
+        (define-key map (kbd "C-c b f") 'go-test-current-file-benchmarks)
+        (define-key map (kbd "C-c b p") 'go-test-current-project-benchmarks)
+        (define-key map (kbd "C-c r") 'go-run)
+        (define-key map (kbd "<f1>") 'godoc)
+        (define-key map (kbd "M-<f1>") 'godoc-at-point))
+
   ; customize compile command
   (if (not (string-match "go" compile-command))
       (set (make-local-variable 'compile-command)

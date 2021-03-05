@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: copy slice
+# key: cslice
+# --
+$1 := make([]$2, len($3))
+copy($1, $3)

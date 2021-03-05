@@ -31,7 +31,6 @@
 ;; do not show line numbers
 (global-linum-mode 0)
 
-
 ;;;;
 ;; Themes
 ;;;;
@@ -43,7 +42,11 @@
 ;; or consolas 110
 (set-face-attribute 'default nil
                     :family "Consolas"
-                    :height 150)
+                    :height 140)
+
+;; (set-face-attribute 'default nil
+                    ;; :family "monospace"
+                    ;; :height 140)
 
 ;; make titlebar same colo as Emacs background
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -63,26 +66,23 @@
 (setq ring-bell-function 'ignore)
 
 ;; set color theme
-(load-theme 'solarized-dark t)
+;; (load-theme 'solarized-dark t)
+(load-theme 'cyberpunk t)
 
-;; powerline
-;; (require 'powerline)
-;; (powerline-default-theme)
+;;
+;; configure side windows
+;;
+(defvar parameters
+  '(window-parameters . ((no-other-window . t)
+                         (no-delete-other-windows . t)
+                         (mode-line-format . none))))
 
-;; (setq powerline-color1 "#073642")
-;; (setq powerline-color2 "#002b36")
+(setq fit-window-to-buffer-horizontally t)
+(setq window-resize-pixelwise t)
 
-;; (set-face-attribute 'mode-line nil
-                    ;; :foreground "#fdf6e3"
-                    ;; :background "#2aa198"
-                    ;; :box nil
-                    ;; :inverse-video nil)
-;; (set-face-attribute 'mode-line-inactive nil
-                    ;; :box nil
-                    ;; :inverse-video nil)
+(setq compilation-scroll-output 'first-error)
 
-;; set icons theme for Neotree
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-(setq neo-autorefresh nil)
-;; make neotree resizable
-(setq neo-window-fixed-size nil)
+(setq display-buffer-alist
+      `(("\\*\\(compilation\\|Go Test\\|Gofmt Errors\\)\\*" display-buffer-in-side-window
+         (side . bottom) (slot . 1) (preserve-size . (nil . t))
+         ,parameters)))

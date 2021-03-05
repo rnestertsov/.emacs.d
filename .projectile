@@ -6,3 +6,8 @@
 -/vendor
 -/url
 -*.el~
+-/.cask
+-/.cache
+-/workspace
+-/eclipse.jdt.ls
+-/transient

@@ -57,8 +57,8 @@
   '("ViewInBrowser" . mu4e-action-view-in-browser) t)
 
 ;; browse folder using helm
-(defun my/mu4e-read-maildir (prompt maildirs predicate require-match initial-input)
-  (helm-comp-read prompt maildirs
-                  :name prompt
-                  :must-match t))
-(setq mu4e-completing-read-function 'my/mu4e-read-maildir)
+;; (defun my/mu4e-read-maildir (prompt maildirs predicate require-match initial-input)
+  ;; (helm-comp-read prompt maildirs
+                  ;; :name prompt
+                  ;; :must-match t))
+;; (setq mu4e-completing-read-function 'my/mu4e-read-maildir)
