@@ -15,9 +15,9 @@
 
 ;; ivy
 ;; make ivy nicer
-(require 'ivy-rich)
-(ivy-rich-mode 1)
-(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+;; (require 'ivy-rich)
+;; (ivy-rich-mode 1)
+;; (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
 
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
@@ -25,8 +25,8 @@
 (global-set-key (kbd "C-c s") 'window-swap-states)
 (setq ivy-rich-path-style 'abbrev)
 
-(define-key ivy-minibuffer-map (kbd "C-<SPC>") 'ivy-mark)
-(define-key ivy-minibuffer-map (kbd "S-<SPC>") 'ivy-unmark)
+;; (define-key ivy-minibuffer-map (kbd "C-<SPC>") 'ivy-mark)
+;; (define-key ivy-minibuffer-map (kbd "S-<SPC>") 'ivy-unmark)
 
 ;;
 ;; Dired sidebar configuration

@@ -21,3 +21,5 @@ server
 persistent-scratch
 network-security.data
 ensime
+transient
+amx-items

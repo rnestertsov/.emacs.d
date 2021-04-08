@@ -2,8 +2,8 @@
 
 ;;
 
-(require 'cquery)
-(setq cquery-executable "/usr/local/bin/cquery")
+;; (require 'cquery)
+;; (setq cquery-executable "/usr/local/bin/cquery")
 
 (defun my/c-mode-hook ()
   "Hook for C/C++ mode"

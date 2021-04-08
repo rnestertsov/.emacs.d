@@ -511,7 +511,7 @@ Skip project and sub-project tasks, habits, and loose non-project tasks."
 ;; configure org-babel in order to be able generate graphics using
 ;; external packages
 (setq org-ditaa-jar-path "/usr/local/Cellar/ditaa/0.11.0/libexec/ditaa-0.11.0-standalone.jar")
-(setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2020.18/libexec/plantuml.jar")
+(setq org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2021.3/libexec/plantuml.jar")
 
 ;; remove "Validate XHTML 1.0" from html export
 (setq org-export-html-validation-link nil)

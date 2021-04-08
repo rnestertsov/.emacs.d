@@ -9,7 +9,7 @@
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
-	           '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	           '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
@@ -115,7 +115,7 @@
 
                       ;; restclient
                       ;; https://github.com/pashky/restclient.el
-                      restclient
+                      ;;restclient
 
                       ;; web-mode
                       ;; https://github.com/fxbois/web-mode
@@ -132,7 +132,7 @@
                       ;; ledger-mode
                       ledger-mode
                       flycheck-ledger
-                      dklrt
+                      ;;dklrt
 
                       ;; groovy-mode
                       ;; https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes
@@ -144,7 +144,7 @@
 
                       ;; interleave
                       ;; https://github.com/rudolfochrist/interleave
-                      interleave
+                      ;;interleave
 
                       ;; org-ref
                       ;; https://github.com/jkitchin/org-ref
@@ -160,12 +160,12 @@
 
                       ;; cquery
                       ;; https://github.com/cquery-project/cquery
-                      cquery
+                      ;;cquery
 
                       ;; lsp-mode
                       lsp-mode
                       ;; lsp-ui ;; to intrusive
-                      company-lsp
+                      ;;company-lsp
 
                       ivy
                       ivy-rich
